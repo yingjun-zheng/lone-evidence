@@ -2,6 +2,9 @@
 
 > 以下文本可直接复制到提交表单。分了三个长度，按字段字数选。
 
+> **GitHub 仓库**：https://github.com/yingjun-zheng/lone-evidence
+> **线上作品**：https://lone-evidence.app.workbuddy.host/?sharecode=TSPFMJN445
+
 ---
 
 ## A. 一句话介绍（≤30 字）
