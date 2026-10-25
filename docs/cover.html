@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1280px; height: 720px; overflow: hidden; background: #0a0c0f; }
+  body { font-family: "Microsoft YaHei", "PingFang SC", -apple-system, sans-serif; }
+  .cover { position: relative; width: 1280px; height: 720px; display: flex; }
+
+  .left { width: 620px; padding: 104px 0 0 86px; }
+  h1 { font-size: 132px; font-weight: 600; letter-spacing: 14px; color: #e7e9ee; line-height: 1; }
+  h1 em { font-style: normal; color: #e5484d; }
+  .rule { width: 132px; height: 4px; background: #e5484d; margin: 32px 0 28px; }
+  .sub { font-size: 31px; color: #9aa1ac; letter-spacing: 2px; }
+  .desc { margin-top: 20px; font-size: 16px; color: #5d6570; line-height: 1.95; letter-spacing: .5px; }
+  .foot { position: absolute; left: 86px; bottom: 62px; font-size: 14px; color: #4a515b; letter-spacing: 3px; }
+  .foot span { color: #6e7681; }
+
+  .right { position: relative; width: 660px; padding-top: 176px; }
+  .cap { position: absolute; left: 30px; top: 112px; font-size: 12px; color: #5b6470; letter-spacing: 4px; }
+  .row { display: flex; align-items: center; height: 96px; }
+  .row.last { margin-top: 16px; }
+  .lab { width: 150px; font-size: 13px; color: #5d6570; text-align: right; padding-right: 24px; letter-spacing: .5px; }
+  .dots { display: flex; flex-wrap: wrap; gap: 3px; width: 470px; align-content: center; }
+  .d { width: 6px; height: 6px; border-radius: 1.5px; }
+  .big { width: 26px; height: 26px; border-radius: 6px; }
+  .note { margin-left: 26px; font-size: 13px; color: #7c848f; letter-spacing: .5px; }
+  .note b { color: #e5484d; font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="left">
+    <h1>孤<em>证</em></h1>
+    <div class="rule"></div>
+    <div class="sub">43 个来源，1 个声音</div>
+    <div class="desc">把搜索结果剥到只剩独立发声者的查证引擎<br>排除掉最吵的那几个，再问一遍：还有谁在说</div>
+    <div class="foot">元宝搜索 <span>·</span> 1024 超能 Coding 周末 <span>·</span> 侦探赛道</div>
+  </div>
+  <div class="right">
+    <div class="cap">一 次 查 证 的 坍 缩 过 程</div>
+    <div id="viz"></div>
+  </div>
+</div>
+<script>
+  const ROWS = [
+    { n: 50, label: '50 条结果',   color: '#5b6979', big: false, note: '' },
+    { n: 17, label: '17 个域名',   color: '#6d8199', big: false, note: '' },
+    { n: 3,  label: '3 个独立说法', color: '#a86b6b', big: false, note: '' },
+    { n: 1,  label: '1 个声音',    color: '#e5484d', big: true,  note: '' },
+  ];
+  const viz = document.getElementById('viz');
+  ROWS.forEach((r, i) => {
+    const row = document.createElement('div');
+    row.className = 'row' + (r.big ? ' last' : '');
+    const lab = document.createElement('div');
+    lab.className = 'lab';
+    lab.textContent = r.label;
+    const dots = document.createElement('div');
+    dots.className = 'dots';
+    for (let k = 0; k < r.n; k++) {
+      const d = document.createElement('i');
+      d.className = 'd' + (r.big ? ' big' : '');
+      d.style.background = r.color;
+      dots.appendChild(d);
+    }
+    row.appendChild(lab);
+    row.appendChild(dots);
+    if (r.note) {
+      const nt = document.createElement('div');
+      nt.className = 'note';
+      nt.innerHTML = r.note;
+      row.appendChild(nt);
+    }
+    viz.appendChild(row);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+.env
+data/cache/
+data/quota.json
+__pycache__/
+*.pyc
+*.pyo
+.edge-*/
